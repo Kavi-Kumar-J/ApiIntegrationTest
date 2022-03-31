@@ -1,26 +1,28 @@
 package com.example.apiintegrationtest
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.databinding.DataBindingUtil
-import com.example.apiintegrationtest.databinding.ActivityMainBinding
-import com.example.apiintegrationtest.viewmodel.LoginViewModel
+import androidx.fragment.app.FragmentContainerView
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
 import dagger.android.AndroidInjection
-import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
-    @Inject
-    lateinit var loginVM: LoginViewModel
+
+    private lateinit var fragmentContainer: NavHostFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AndroidInjection.inject(this)
-        var binding: ActivityMainBinding =
-            DataBindingUtil.setContentView(this, R.layout.activity_main)
-        binding.lifecycleOwner = this
-        binding.vm = loginVM
+        supportActionBar?.hide()
+        setContentView(R.layout.activity_main)
 
+        fragmentContainer =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment_container) as NavHostFragment
+        NavigationUI.setupActionBarWithNavController(this, fragmentContainer.navController)
+    }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 }

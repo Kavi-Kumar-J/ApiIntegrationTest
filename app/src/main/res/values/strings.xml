@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">ApiIntegrationTest</string>
-    <string name="username_plc">UserName</string>
+    <string name="email_plc">Email</string>
     <string name="password_plc">Password</string>
-    <string name="Login">Login</string>
-    <string name="Signup">Signup</string>
+    <string name="sign_in">SignIn</string>
+    <string name="sign_up">SignUp</string>
+    <string name="username_plc">Username</string>
+    <string name="already_an_user">Already an user?</string>
+    <string name="new_user">New User?</string>
 </resources>
